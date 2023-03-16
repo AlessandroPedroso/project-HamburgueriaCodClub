@@ -1,5 +1,5 @@
 import React from "react";
-
+import { toast } from 'react-toastify';
 import LoginImg from '../../assets/login-logo.svg';
 import LogoBurger from '../../assets/burger.svg';
 import api from '../../services/api'
@@ -24,10 +24,28 @@ const Login = () => {
 
     const onSubmit = async clientData => {
         //console.log(clientData)
-        const response = await api.post('sessions',{
-            email:clientData.email,
-            password:clientData.password
-        })
+        const response = await toast.promise(
+            api.post('sessions',{
+                email:clientData.email,
+                password:clientData.password
+            }),
+            {
+                pending: 'Verificando seus dados',
+                success: 'Seja bem-vindo(a)',
+                error: 'Verifique seu e-mail e senha'
+            }
+        ) 
+
+        // toast.error('Deu ruim', {
+        //     position: "top-right",
+        //     autoClose: 5000,
+        //     hideProgressBar: false,
+        //     closeOnClick: true,
+        //     pauseOnHover: true,
+        //     draggable: true,
+        //     progress: undefined,
+        //     theme: "colored",
+        //     });
 
         console.log(response)
     };

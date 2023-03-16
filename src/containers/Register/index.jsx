@@ -1,5 +1,5 @@
 import React from "react";
-
+import { toast } from 'react-toastify';
 import RegisterImg from '../../assets/register-image.svg';
 import LogoBurger from '../../assets/burger.svg';
 import api from '../../services/api'
@@ -26,13 +26,27 @@ const Register = () => {
 
     const onSubmit = async clientData => {
         //console.log(clientData)
-        const response = await api.post('users',{
-            name:clientData.name,
-            email:clientData.email,
-            password:clientData.password
-        })
+        try{
+            const {status,data}= await api.post('users',{
+                name:clientData.name,
+                email:clientData.email,
+                password:clientData.password
+            }, {validateStatus: () => true})
+            // console.log(status)
+            // console.log(data.error)
 
-        console.log(response)
+            if(status===201 || status===200){
+                toast.success('Cadastro criado com sucesso!')
+            }else if(status===409){
+                toast.error(data.error)
+            }else{
+                throw new Error()
+            }
+            
+        }catch(err){
+            toast.error('Falha no sistema! tente novamente')
+        }
+
     };
 
     return (
