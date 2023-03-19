@@ -9,9 +9,12 @@ import { Container, LoginImage, ContainerItens, Label, Input, SingnInLink,Error 
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup'
-
+import {useUser} from '../../hooks/UserContext'
 
 const Login = () => {
+
+    const users = useUser()
+    console.log(users)
 
     const schema = Yup.object().shape({
         email: Yup.string().email("Digite um e-mail válido!").required("O e-mail é obrigatório!"),

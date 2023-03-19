@@ -4,11 +4,14 @@ import ReactDOM from 'react-dom/client'
 import Login from './containers/Login'
 import GlobalStyles from './styles/GlobalStyles'
 import Register from './containers/Register'
+import { UserProvider } from './hooks/UserContext'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <GlobalStyles/>
-    <Register />
-    <ToastContainer autoClose={2000} theme="colored" />
-  </React.StrictMode>,
+    <React.StrictMode>
+        <UserProvider>
+            <Login />
+        </UserProvider>
+        <GlobalStyles />
+        <ToastContainer autoClose={2000} theme="colored" />
+    </React.StrictMode>,
 )
