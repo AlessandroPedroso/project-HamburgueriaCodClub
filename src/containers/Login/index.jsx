@@ -13,8 +13,8 @@ import {useUser} from '../../hooks/UserContext'
 
 const Login = () => {
 
-    const users = useUser()
-    console.log(users)
+    const {putUserData,userData} = useUser()
+    console.log(userData)
 
     const schema = Yup.object().shape({
         email: Yup.string().email("Digite um e-mail válido!").required("O e-mail é obrigatório!"),
@@ -27,7 +27,7 @@ const Login = () => {
 
     const onSubmit = async clientData => {
         //console.log(clientData)
-        const response = await toast.promise(
+        const {data} = await toast.promise(
             api.post('sessions',{
                 email:clientData.email,
                 password:clientData.password
@@ -49,8 +49,8 @@ const Login = () => {
         //     progress: undefined,
         //     theme: "colored",
         //     });
-
-        console.log(response)
+        putUserData(data)
+        console.log(userData)
     };
 
     return (
