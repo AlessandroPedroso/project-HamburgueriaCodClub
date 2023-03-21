@@ -9,6 +9,7 @@ import { Container, RegisterImage, ContainerItens, Label, Input, SingnInLink,Err
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup'
+import { Link } from "react-router-dom";
 
 
 const Register = () => {
@@ -76,7 +77,7 @@ const Register = () => {
 
                     <Button type="submit" style={{marginTop:25, marginBottom:25}} >Sign In</Button>
                 </form>
-                <SingnInLink>Já possui conta? <a>Sign In</a></SingnInLink>
+                <SingnInLink>Já possui conta? <Link style={{color:'white'}} to="/login">Sign In</Link></SingnInLink>
                 
             </ContainerItens>
         </Container>

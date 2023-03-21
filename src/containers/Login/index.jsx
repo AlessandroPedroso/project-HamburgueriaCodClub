@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup'
 import {useUser} from '../../hooks/UserContext'
+import { Link } from "react-router-dom";
 
 const Login = () => {
 
@@ -72,7 +73,7 @@ const Login = () => {
 
                     <Button type="submit" style={{marginTop:40, marginBottom:25}} >Sign In</Button>
                 </form>
-                <SingnInLink>Não possui conta ? <a>Sign up</a></SingnInLink>
+                <SingnInLink>Não possui conta ? <Link style={{color: 'white'}} to="/cadastro">Sign up</Link></SingnInLink>
                 
             </ContainerItens>
         </Container>
