@@ -10,10 +10,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup'
 import {useUser} from '../../hooks/UserContext'
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 
 const Login = () => {
-
+    const navigate = useNavigate()
     const {putUserData,userData} = useUser()
     console.log(userData)
 
@@ -51,7 +51,10 @@ const Login = () => {
         //     theme: "colored",
         //     });
         putUserData(data)
-        console.log(userData)
+        setTimeout(() => {
+            navigate('/')
+        }, 1000);
+        
     };
 
     return (
