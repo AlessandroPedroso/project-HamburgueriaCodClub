@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 const UserContext = createContext({})
 
 export const UserProvider = ({children}) => {
-
     const [userData, setUserData] = useState({})
 
     const putUserData = async (useInfo) => {
