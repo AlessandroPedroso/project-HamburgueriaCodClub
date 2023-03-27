@@ -1,7 +1,8 @@
 import React from "react";
 import HomeLogo from '../../assets/home-logo.svg'
 import CategoryCarrousel from "../../components/CategoryCarrousel";
-import {Container,Img} from '../Home/styles'
+import OffersCarrousel from "../../components/OffersCarrousel";
+import {Container,Img} from './styles'
 
 const Home = () =>{
 
@@ -9,6 +10,7 @@ const Home = () =>{
         <Container>
             <Img src={HomeLogo} alt="imagem da home" />
             <CategoryCarrousel/>
+            <OffersCarrousel/>
         </Container>
     )
 }
