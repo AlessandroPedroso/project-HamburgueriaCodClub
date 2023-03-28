@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-
+    background-color: #E5E5E5;;
 `
 
 export const CategoriesMenu = styled.div`
@@ -26,4 +26,16 @@ export const CategoryButton = styled.button`
     font-size: 17px;
     line-height: 20px;
     padding-bottom: 5px;
+`
+
+export const ProductsContainer = styled.div`
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    row-gap: 20px;
+    column-gap: 10px;
+    padding: 40px;
+    justify-items: center;
+    margin-top: 20px;
+    width: 100%;
+
 `
