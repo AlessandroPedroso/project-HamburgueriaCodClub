@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import RegisterImg from '../../assets/register-image.svg';
 import LogoBurger from '../../assets/burger.svg';
 import api from '../../services/api'
-import Button from '../../components/Button/index'
+import {Button} from '../../components'
 import { Container, RegisterImage, ContainerItens, Label, Input, SingnInLink,Error } from './styles.js'
 
 import { useForm } from "react-hook-form";
@@ -12,7 +12,7 @@ import * as Yup from 'yup'
 import { Link } from "react-router-dom";
 
 
-const Register = () => {
+export const Register = () => {
 
     const schema = Yup.object().shape({
         name: Yup.string().required("O seu nome é obrigatório"),
@@ -83,5 +83,3 @@ const Register = () => {
         </Container>
     )
 }
-
-export default Register

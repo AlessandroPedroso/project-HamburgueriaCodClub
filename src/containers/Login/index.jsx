@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import LoginImg from '../../assets/login-logo.svg';
 import LogoBurger from '../../assets/burger.svg';
 import api from '../../services/api'
-import Button from '../../components/Button/index'
+import {Button} from '../../components'
 import { Container, LoginImage, ContainerItens, Label, Input, SingnInLink,Error } from './styles.js'
 
 import { useForm } from "react-hook-form";
@@ -12,7 +12,7 @@ import * as Yup from 'yup'
 import {useUser} from '../../hooks/UserContext'
 import { Link,useNavigate } from "react-router-dom";
 
-const Login = () => {
+export const Login = () => {
     const navigate = useNavigate()
     const {putUserData,userData} = useUser()
     console.log(userData)
@@ -82,5 +82,3 @@ const Login = () => {
         </Container>
     )
 }
-
-export default Login

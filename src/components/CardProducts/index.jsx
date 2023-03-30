@@ -1,7 +1,7 @@
 import React from "react";
-import Button from '../Button'
+import {Button} from '../../components'
 import {Container,Image,ProductName,ProductPrice} from './styles'
-const CardProducts = ({products}) =>{
+export const CardProducts = ({products}) =>{
     return (
         <Container>
             <Image src={products.url} alt="imagem do produto"/>
@@ -13,5 +13,3 @@ const CardProducts = ({products}) =>{
         </Container>
     )
 }
-
-export default CardProducts

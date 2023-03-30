@@ -4,7 +4,7 @@ import { Container, CategoryImg,ContainerItems,Image,Button } from './styles'
 import Category from '../../assets/category.png'
 import Carousel from 'react-elastic-carousel'
 
-function CategoryCarrousel() {
+export function CategoryCarrousel() {
     const [categorias, setCategorias] = useState([])
 
     useEffect(() => {
@@ -41,5 +41,3 @@ function CategoryCarrousel() {
         </Container>
     )
 }
-
-export default CategoryCarrousel
