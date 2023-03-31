@@ -46,6 +46,7 @@ export const Products = () => {
         } else {
 
             const newFilteredProdutcs = products.filter(products => products.category_id === activeCategories)
+            
             if (newFilteredProdutcs.length === 0) {
 
                 SetProductNo('Produto não cadastrado!')
