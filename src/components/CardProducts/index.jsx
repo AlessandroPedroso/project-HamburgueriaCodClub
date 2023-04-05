@@ -2,6 +2,7 @@ import React from "react";
 import {Button} from '../../components'
 import {Container,Image,ProductName,ProductPrice} from './styles'
 import { useCart } from "../../hooks/CartContext";
+
 export const CardProducts = ({products}) =>{
     const {putProductsInCart} = useCart()
     return (

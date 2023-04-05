@@ -2,7 +2,7 @@ import React from "react";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import {Home,Login,Products,Register} from '../containers/index'
+import {Home,Login,Products,Register,Cart} from '../containers/index'
 
 import PrivateRoute from "./private-route"
 const MyRoutes = () => {
@@ -14,6 +14,7 @@ const MyRoutes = () => {
                 <Route exact path="/" element={<PrivateRoute/>}>
                     <Route exact path='/' element={<Home/>}/>
                     <Route path='/produtos' element={<Products/>}/>
+                    <Route path='/carrinho' element={<Cart/>}/>
                 </Route>
 
             </Routes>

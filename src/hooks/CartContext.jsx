@@ -8,6 +8,7 @@ export const CardProvider = ({ children }) => {
 
     const putProductsInCart = async products => {
         const cartIndex = cardProducts.findIndex(prd => prd.id === products.id)
+        
         let newCartProducts = []
         if (cartIndex >= 0) {
             newCartProducts = cardProducts
@@ -43,8 +44,6 @@ export const CardProvider = ({ children }) => {
 
     )
 }
-
-
 
 export const useCart = () => {
     const context = useContext(CardContext)
