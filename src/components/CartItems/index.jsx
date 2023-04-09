@@ -1,6 +1,6 @@
 import React from "react";
 import {useCart} from '../../hooks/CartContext'
-import {Container,Header,Body} from './styles'
+import {Container,Header,Body,EmptyCart} from './styles'
 import formatCurrency from '../../utils/formartCurrency'
 export const CartItems = () =>{
     const {cardProducts} = useCart()
@@ -14,7 +14,8 @@ export const CartItems = () =>{
             <p>Quantidade</p>
             <p>Total</p>
             </Header>
-            {cardProducts && cardProducts.map(produto => (
+            {cardProducts && cardProducts.length > 0?
+             cardProducts.map(produto => (
             <Body key={produto.id}>
                 <img src={produto.url}/>
                 <p>{produto.name}</p>
@@ -22,7 +23,7 @@ export const CartItems = () =>{
                 <p>{produto.quantity}</p>
                 <p>{formatCurrency(produto.quantity * produto.price)}</p>
             </Body>
-            ))}
+            )):<EmptyCart>Carrinho vazio</EmptyCart>}
         </Container>
     )
 }
