@@ -11,7 +11,7 @@ width: max-content;
 export const Header = styled.div`
     display:grid;
     justify-items: center;
-    grid-template-columns: repeat(5,200px);
+    grid-template-columns: repeat(6,200px);
     padding: 10px;
     border-bottom: 2px solid #B5B5B5;
 
@@ -24,7 +24,7 @@ export const Header = styled.div`
 
 export const Body = styled.div`
     display:grid;
-    grid-template-columns: repeat(5,200px);
+    grid-template-columns: repeat(6,200px);
     padding: 10px;
     width: max-content;
     justify-items: center;
@@ -42,6 +42,24 @@ export const Body = styled.div`
         color:black;
        
     }
+
+    .quantity-container{
+        display: flex;
+        gap:20px;
+
+        button{
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        p{
+            margin-top: 5px;
+        }
+    }
+
+
 `
 
 export const EmptyCart = styled.div `

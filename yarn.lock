@@ -1091,6 +1091,7 @@ __metadata:
     react-dom: ^18.2.0
     react-elastic-carousel: ^0.11.5
     react-hook-form: ^7.43.5
+    react-icons: ^4.8.0
     react-is: ^18.2.0
     react-router-dom: ^6.9.0
     react-toastify: ^9.1.1
@@ -3171,6 +3172,15 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17 || ^18
   checksum: cfd757ac24bc81946d97183d061f38c8b602baaf9d019e87a905ce66f3a9f1d91d3a21002b921f8322e79b2afa9a4921b7c2d76e594fcf384e1b96889de2f2f5
+  languageName: node
+  linkType: hard
+
+"react-icons@npm:^4.8.0":
+  version: 4.8.0
+  resolution: "react-icons@npm:4.8.0"
+  peerDependencies:
+    react: "*"
+  checksum: 4dbba7ad989c295b410e19b2a702722dae44368cb04b6515f9471353552f31ac80bd350f121d5bff79f81504b84039ede44d09e9f035f48bb1032e6eace126c4
   languageName: node
   linkType: hard
 
