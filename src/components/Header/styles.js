@@ -18,15 +18,10 @@ export const ContainerLeft = styled.div`
 export const PageLink = styled.a`
     cursor: pointer;
     text-decoration: none;
-    font-weight: 400;
+    font-weight:${props => (props.isActive? '700':'400')};
     font-size: 16px;
     line-height: 19px;
-    color: #555555;
-
-    &&:hover{
-        color: #9758A6;
-        font-weight: 700;
-    }
+    color: ${props => (props.isActive? '#9758A6':'#555555')};
 `
 
 export const ContainerRight = styled.div`
