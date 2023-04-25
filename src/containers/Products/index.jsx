@@ -4,14 +4,29 @@ import api from '../../services/api'
 import { Container, ProductImg, CategoryButton, CategoriesMenu, ProductsContainer } from './styles'
 import {CardProducts} from '../../components'
 import formatCurrency from '../../utils/formartCurrency'
+import {useLocation} from 'react-router-dom'
 
 export const Products = () => {
+
+
 
     const [categorias, setCategorias] = useState([])
     const [products, setProducts] = useState([])
     const [filteredProducts, setFilteredProducts] = useState([])
     const [activeCategories, setActiveCategories] = useState(0)
     const [productNo, SetProductNo] = useState('')
+
+    const {state} = useLocation()
+
+    if(state?.categoryId){
+            useEffect(()=>{
+        
+                setActiveCategories(state.categoryId)
+            
+        },[state.categoryId])
+    }
+
+
     useEffect(() => {
 
         async function loadCategories() {

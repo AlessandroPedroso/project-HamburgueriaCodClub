@@ -4,9 +4,14 @@ import { Container, CategoryImg,ContainerItems,Image,Button } from './styles'
 import Offer from '../../assets/offer.png'
 import Carousel from 'react-elastic-carousel'
 import formatCurrency from '../../utils/formartCurrency'
+import { useCart } from "../../hooks/CartContext";
+import {useNavigate} from 'react-router-dom'
+
 
 export function OffersCarrousel() {
     const [offers, setOffers] = useState([])
+    const {putProductsInCart} = useCart()
+    const navigate = useNavigate()
 
     useEffect(() => {
 
@@ -38,7 +43,7 @@ export function OffersCarrousel() {
                         <Image src={products.url} alt="foto do produto" />
                         <p>{products.name}</p>
                         <p>{products.formatedPrice}</p>
-                        <Button>Peça agora</Button>
+                        <Button onClick={()=> {putProductsInCart(products),navigate('/carrinho')}}>Peça agora</Button>
                     </ContainerItems>
                     
                   ))

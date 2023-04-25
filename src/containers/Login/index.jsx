@@ -67,7 +67,7 @@ export const Login = () => {
                 <h1>Login</h1>
                 <form noValidate onSubmit={handleSubmit(onSubmit)}>
                     <Label>Email</Label>
-                    <Input type="email" {...register("email")} error={errors.password?.message} />
+                    <Input type="email" {...register("email")} error={errors.email?.message} />
                     <Error>{errors.email?.message}</Error>
 
                     <Label>Senha</Label>
