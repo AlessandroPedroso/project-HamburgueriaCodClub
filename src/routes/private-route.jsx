@@ -1,12 +1,37 @@
 import React from "react";
 
-import { Navigate , Outlet  } from 'react-router-dom';
+import { Route,Redirect  } from 'react-router-dom';
 import { Header } from "../components";
 
-function PrivateRoute(){
+
+function PrivateRoute({isAdmin,component,...rest}){
     const user = localStorage.getItem('codeburger:userDate')
 
-    return user ? <><Header/><Outlet/></>:<Navigate to="/login"/>
+    if(!user){
+        return <Redirect to='/login'/>
+    }
+
+    if(isAdmin && !JSON.parse(user).admin){
+        return <Redirect to='/' />
+    }
+
+
+    return (
+        <>
+            {!isAdmin && <Header/>}
+            <Route {...rest} component={component}/>
+        </>
+    )
+    
+
+
+    // if(user && userAdmin.admin == false){
+    //     return <Outlet/>
+    // }
+ 
+    // return user ? <>{!userAdmin.admin && <Header/>}<Outlet/></>:<Navigate to="/login"/>
+
+
 
     // if(!user){
     //     return <Navigate to='/login'/>

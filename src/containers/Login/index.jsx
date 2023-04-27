@@ -10,10 +10,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup'
 import {useUser} from '../../hooks/UserContext'
-import { Link,useNavigate } from "react-router-dom";
+import { Link,useHistory } from "react-router-dom";
 
 export const Login = () => {
-    const navigate = useNavigate()
+    const history = useHistory()
     const {putUserData,userData} = useUser()
     console.log(userData)
 
@@ -52,7 +52,11 @@ export const Login = () => {
         //     });
         putUserData(data)
         setTimeout(() => {
-            navigate('/')
+            if (data.admin){
+                history.push('/pedidos')
+            }else{
+                history.push('/')
+            }
         }, 1000);
         
     };

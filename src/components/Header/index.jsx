@@ -2,28 +2,27 @@ import React from "react";
 import Person from '../../assets/person.png'
 import Cart from '../../assets/cart.png'
 import {Container,ContainerLeft,PageLink,ContainerRight,ContainerText,Line,PageLinkExit} from './styles'
-import {useNavigate,useLocation} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 import {useUser} from '../../hooks/UserContext'
 
 export const Header = () =>{
-    const navigate = useNavigate()
-    const {pathname} = useLocation()
+    const {push,location:{pathname}} = useHistory()
     const {logout,userData} = useUser()
 
     const logoutUser = ()=>{
         logout()
-        navigate('/login')
+        push('/login')
     }
 
     return (
         <Container>
 
             <ContainerLeft>
-                <PageLink onClick={()=>navigate('/')} isActive={pathname === '/'}>
+                <PageLink onClick={()=>push('/')} isActive={pathname === '/'}>
                     Home
                 </PageLink>
 
-                <PageLink onClick={()=> navigate('/produtos')} isActive={pathname.includes('produtos')}>
+                <PageLink onClick={()=> push('/produtos')} isActive={pathname.includes('produtos')}>
                     Ver Produtos
                 </PageLink>
             </ContainerLeft>
