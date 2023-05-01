@@ -28,7 +28,7 @@ export const Header = () =>{
             </ContainerLeft>
 
             <ContainerRight>
-            <PageLink onClick={()=> navigate('/carrinho')}>
+            <PageLink onClick={()=> push('/carrinho')}>
                     <img src={Cart} alt="carrinho" />
                 </PageLink>
                 <Line></Line>

@@ -15,9 +15,9 @@ function PrivateRoute({isAdmin,component,...rest}){
         return <Redirect to='/' />
     }
 
-
     return (
         <>
+        
             {!isAdmin && <Header/>}
             <Route {...rest} component={component}/>
         </>
