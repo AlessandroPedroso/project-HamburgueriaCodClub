@@ -1,6 +1,7 @@
 import React,{useEffect, useState} from "react"
 import { Container } from "./styles"
 import api from '../../../services/api'
+import Row from "./row";
 
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
@@ -52,10 +53,28 @@ const Orders = ()=>{
 
       },[orders])
 
-    console.log(rows)
 
     return (
-        <Container><h1>Pedidos</h1></Container>
+        <Container>
+                <TableContainer component={Paper}>
+                    <Table aria-label="collapsible table">
+                    <TableHead>
+                        <TableRow>
+                        <TableCell />
+                        <TableCell>Pedido</TableCell>
+                        <TableCell >Cliente</TableCell>
+                        <TableCell >Data do pedido</TableCell>
+                        <TableCell >Status</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {rows.map((row) => (
+                        <Row key={row.orderId} row={row} />
+                        ))}
+                    </TableBody>
+                    </Table>
+                </TableContainer>
+        </Container>
     )
 }
 
