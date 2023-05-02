@@ -1,6 +1,5 @@
 import React,{useEffect, useState} from "react"
-import { Container } from "./styles"
-import api from '../../../services/api'
+import ReactSelect from 'react-select'
 
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
@@ -9,16 +8,46 @@ import IconButton from '@mui/material/IconButton';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import api from '../../../services/api'
 
-const Row = ({row})=>{
+import {ProductImg,ReactSelectStyle} from './styles'
+import status from './order-status'
+import { toast } from 'react-toastify';
+function Row({row}){
     const [open, setOpen] = React.useState(false);
+    const [isLoading, setIsLoading] = React.useState(false);
+
+    async function setNewStatus(id, status) {
+        setIsLoading(true)
+        try{
+            
+             await api.put(`orders/${id}`,{status})
+
+
+        }catch(err){
+            console.error(err)
+        }finally{
+
+            setIsLoading(false)
+
+            toast.success('Pedido atualizado!', {
+                position: "top-right",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                });
+        }
+    }
   
     return (
       <React.Fragment>
@@ -37,7 +66,15 @@ const Row = ({row})=>{
           </TableCell>
           <TableCell>{row.name}</TableCell>
           <TableCell>{row.date}</TableCell>
-          <TableCell>{row.status}</TableCell>
+          <TableCell>
+               <ReactSelectStyle options={status} menuPortalTarget={document.body} placeholder="Status" 
+                defaultValue={status.find(options=> options.value === row.status) || null}
+                onChange={newStatus =>{
+                    setNewStatus(row.orderId,newStatus.value)
+                }}
+                isLoading={isLoading}
+               /> 
+           </TableCell>
         </TableRow>
         <TableRow>
           <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -62,7 +99,7 @@ const Row = ({row})=>{
                         </TableCell>
                         <TableCell>{products.name}</TableCell>
                         <TableCell>{products.category}</TableCell>
-                        <TableCell><img src={products.url} alt="imagem-do-produto" /></TableCell>
+                        <TableCell><ProductImg src={products.url} alt="imagem-do-produto" /></TableCell>
                         {/* <TableCell align="right">
                           {Math.round(products.amount * row.price * 100) / 100}
                         </TableCell> */}
@@ -80,7 +117,7 @@ const Row = ({row})=>{
   
   Row.propTypes = {
     row: PropTypes.shape({
-      orderId: PropTypes.number.isRequired,
+      orderId: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       date: PropTypes.string.isRequired,
       status: PropTypes.string.isRequired,
