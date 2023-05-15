@@ -15,6 +15,7 @@ const MyRoutes = () => {
                 <PrivateRoute path='/produtos' component={Products}/>
                 <PrivateRoute path='/carrinho' component={Cart}/>
                 <PrivateRoute path="/pedidos" isAdmin component={Admin} />
+                <PrivateRoute path="/listar-produtos" isAdmin component={Admin} />
 
             </Switch>
 
