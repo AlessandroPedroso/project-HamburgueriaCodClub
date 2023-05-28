@@ -3,14 +3,14 @@ import { Container,ItemContainer,ListLink } from "./styles";
 import listLink from "./menu-list";
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useUser } from "../../hooks/UserContext";
-export const SideMenuAdmin = () =>{
+export const SideMenuAdmin = ({path}) =>{
     const {logout} = useUser()
 
    return (
         <Container>
             <hr />
             {listLink.map(item=> (
-                <ItemContainer key={item.id} isActive={true}>
+                <ItemContainer key={item.id} isActive={path === item.link}>
                     <item.icon className="icon"/>
                     <ListLink to={item.link} >{item.label}</ListLink>
                 </ItemContainer>

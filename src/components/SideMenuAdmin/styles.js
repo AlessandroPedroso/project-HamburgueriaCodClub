@@ -10,12 +10,12 @@ export const Container = styled.div`
     left: 0;
 
     hr{
-        margin: 91px 18px 0px;
+        margin: 50px 18px 50px;
     }
 
 `
 export const ItemContainer = styled.div`
-    margin: 51px 7px 0px;
+    margin: 14px 7px 0px;
     padding-left: 18px;
     display: flex;
     align-items: center;
@@ -34,10 +34,10 @@ export const ItemContainer = styled.div`
 
 export const ListLink = styled(Link)`
 
-font-style: normal;
-font-weight: 400;
-font-size: 17px;
-line-height: 19px;
-color: #FFFFFF;
-text-decoration: none;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 19px;
+    color: #FFFFFF;
+    text-decoration: none;
 `
