@@ -30,12 +30,15 @@ export const Input = styled.input`
     margin-bottom: 25px;
     width: 100%;
     min-width: 280px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    padding:21px;
+    color: #333333;
 `
 export const ButtonStyles = styled(Button)`
 
     width: 100%;
     margin-top: 25px;
-
 
 `
 
@@ -48,7 +51,7 @@ export const LabelUpload = styled.label`
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 25px;
-    gap:10px;
+    gap:10px;   
 
     input{
         opacity: 0;

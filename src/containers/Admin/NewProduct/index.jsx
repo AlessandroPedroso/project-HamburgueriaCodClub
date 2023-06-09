@@ -1,16 +1,29 @@
-import React, { useState } from "react"
+import React, { useState,useEffect } from "react"
 import {Container,Label,Input,ButtonStyles,LabelUpload} from './styles'
 import ReactSelect from 'react-select'
-import { useForm } from "react-hook-form";
+import { useForm,Controller } from "react-hook-form";
 import { FaCloudUploadAlt } from 'react-icons/fa';
+import api from '../../../services/api'
 const NewProduct = () =>{
     const [fileName,setFileName] = useState(null)
-
-    const { register, handleSubmit } = useForm();
+    const [categorias,setCategorias] = useState([])
+    const { register, handleSubmit,control } = useForm();
     const onSubmit = data => console.log(data);
+
+    useEffect(() => {
+
+        async function loadCategories() {
+            const { data } = await api.get('categories')
+            setCategorias(data)
+            console.log(data)
+        }
+        
+        loadCategories()
+    }, [])
+
     return (
         <Container>
-            <form noValidate>
+            <form noValidate onSubmit={handleSubmit(onSubmit)}>
                 <Label>Nome</Label>
                 <Input type="text" {...register("name")}/>
 
@@ -35,8 +48,17 @@ const NewProduct = () =>{
                      />
                 </LabelUpload>
                 
+                    <Controller name='category_id' control={control} render={({field})=> {
+                        return (
 
-                <ReactSelect></ReactSelect>
+                            <ReactSelect {...field} options={categorias} getOptionLabel={cat => cat.name} getOptionValue={cat => cat.id} placeholder="Categorias" />
+
+                        )
+                    }}>
+
+
+                    </Controller>
+                
 
                 <ButtonStyles>Adicionar produto</ButtonStyles>
              </form>
