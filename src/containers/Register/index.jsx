@@ -3,8 +3,8 @@ import { toast } from 'react-toastify';
 import RegisterImg from '../../assets/register-image.svg';
 import LogoBurger from '../../assets/burger.svg';
 import api from '../../services/api'
-import {Button} from '../../components'
-import { Container, RegisterImage, ContainerItens, Label, Input, SingnInLink,Error } from './styles.js'
+import {Button,ErrorMessage} from '../../components'
+import { Container, RegisterImage, ContainerItens, Label, Input, SingnInLink} from './styles.js'
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -61,19 +61,19 @@ export const Register = () => {
                 <form noValidate onSubmit={handleSubmit(onSubmit)}>
                 <Label error={errors.name?.message}>Nome</Label>
                     <Input type="text" {...register("name")} error={errors.name?.message} />
-                    <Error>{errors.name?.message}</Error>
+                    <ErrorMessage>{errors.name?.message}</ErrorMessage>
 
                     <Label error={errors.email?.message}>Email</Label>
                     <Input type="email" {...register("email")} error={errors.email?.message} />
-                    <Error>{errors.email?.message}</Error>
+                    <ErrorMessage>{errors.email?.message}</ErrorMessage>
 
                     <Label error={errors.password?.message}>Senha</Label>
                     <Input type="password" {...register("password")} error={errors.password?.message}/>
-                    <Error>{errors.password?.message}</Error>
+                    <ErrorMessage>{errors.password?.message}</ErrorMessage>
 
                     <Label error={errors.confirmPassword?.message}>Confirmar Senha</Label>
                     <Input type="password" {...register("confirmPassword")} error={errors.confirmPassword?.message}/>
-                    <Error>{errors.confirmPassword?.message}</Error>
+                    <ErrorMessage>{errors.confirmPassword?.message}</ErrorMessage>
 
                     <Button type="submit" style={{marginTop:25, marginBottom:25}} >Sign In</Button>
                 </form>

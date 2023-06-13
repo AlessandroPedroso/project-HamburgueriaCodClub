@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import {Button} from '../../../components'
+import ReactSelect from 'react-select'
+
 export const Container = styled.div`
 
     width: 100%;
@@ -57,5 +59,12 @@ export const LabelUpload = styled.label`
         opacity: 0;
         width: 1px;
     }
+
+`
+export const ReactSelectStyle = styled(ReactSelect)`
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: #333333;
 
 `

@@ -3,8 +3,8 @@ import { toast } from 'react-toastify';
 import LoginImg from '../../assets/login-logo.svg';
 import LogoBurger from '../../assets/burger.svg';
 import api from '../../services/api'
-import {Button} from '../../components'
-import { Container, LoginImage, ContainerItens, Label, Input, SingnInLink,Error } from './styles.js'
+import {Button,ErrorMessage} from '../../components'
+import { Container, LoginImage, ContainerItens, Label, Input, SingnInLink} from './styles.js'
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -72,11 +72,11 @@ export const Login = () => {
                 <form noValidate onSubmit={handleSubmit(onSubmit)}>
                     <Label>Email</Label>
                     <Input type="email" {...register("email")} error={errors.email?.message} />
-                    <Error>{errors.email?.message}</Error>
+                    <ErrorMessage>{errors.email?.message}</ErrorMessage>
 
                     <Label>Senha</Label>
                     <Input type="password" {...register("password")} error={errors.password?.message}/>
-                    <Error>{errors.password?.message}</Error>
+                    <ErrorMessage>{errors.password?.message}</ErrorMessage>
 
                     <Button type="submit" style={{marginTop:40, marginBottom:25}} >Sign In</Button>
                 </form>
