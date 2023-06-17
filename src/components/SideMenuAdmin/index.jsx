@@ -16,7 +16,7 @@ export const SideMenuAdmin = ({path}) =>{
                 </ItemContainer>
             ))}
             <hr />
-             <ItemContainer style={{position:'absolute', bottom:'30px'}}>
+             <ItemContainer style={{position:'fixed', bottom:'30px'}}>
                 <LogoutIcon style={{color:'white'}}/>
                 <ListLink to='/login' onClick={()=> logout()}>Sair</ListLink>
             </ItemContainer>   

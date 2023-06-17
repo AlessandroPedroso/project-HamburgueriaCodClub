@@ -5,6 +5,7 @@ import { SideMenuAdmin } from "../../components/"
 import ListProducts from "./ListProducts"
 import paths from "../../constants/paths"
 import NewProduct from "./NewProduct"
+import EditProduct from "./EditProduct"
 
 export const Admin = ({match:{path}})=>{
     //console.log(path)
@@ -15,6 +16,7 @@ export const Admin = ({match:{path}})=>{
                 {path === paths.Order && <Orders/> }
                 {path === paths.Products && <ListProducts/> }
                 {path === paths.NewProduct && <NewProduct/>}
+                {path === paths.EditProduct && <EditProduct/>}
                 
             </ContainerItens>
 

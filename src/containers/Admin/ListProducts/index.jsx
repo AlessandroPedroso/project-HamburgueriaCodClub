@@ -1,5 +1,6 @@
 import React,{useEffect, useState} from "react";
 import { Container,Img,EditIconStyles } from "./styles";
+import {useHistory} from 'react-router-dom'
 import api from '../../../services/api'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -11,10 +12,12 @@ import Paper from '@mui/material/Paper';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import CancelIcon from '@mui/icons-material/Cancel';
 import formatCurrency from '../../../utils/formartCurrency'
+import paths from "../../../constants/paths";
 
 const ListProducts = () =>{
 
     const[products,setProducts] = useState()
+    const {push} = useHistory()
 
     useEffect(() => {
 
@@ -32,6 +35,10 @@ const ListProducts = () =>{
         }
 
         return <CancelIcon style={{colo:'#CC1717'}} />
+    }
+
+    function editProduct(products){
+        push(paths.EditProduct,{products})
     }
 
     return (
@@ -59,7 +66,7 @@ const ListProducts = () =>{
               <TableCell>{formatCurrency(products.price)}</TableCell>
                 <TableCell align='center' >{isOffer(products.offer)}</TableCell>
               <TableCell align='center'><Img src={products.url} alt="imagem-produto" /></TableCell>
-              <TableCell><EditIconStyles/></TableCell>
+              <TableCell><EditIconStyles onClick={()=> editProduct(products)}/></TableCell>
             </TableRow>
           ))}
         </TableBody>

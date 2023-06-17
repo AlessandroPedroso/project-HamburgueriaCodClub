@@ -7,10 +7,14 @@ import api from '../../../services/api'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ErrorMessage } from "../../../components";
+import {useHistory} from 'react-router-dom'
 
-const NewProduct = () =>{
+const EditProduct = () =>{
     const [fileName,setFileName] = useState(null)
     const [categorias,setCategorias] = useState([])
+    const {push, location: {state:{products}}} = useHistory()
+
+    console.log(products)
     
     const schema = Yup.object().shape({
         name: Yup.string().required('Digite o nome do produto'),
@@ -107,4 +111,4 @@ const NewProduct = () =>{
     )
 }
 
-export default NewProduct
+export default EditProduct
