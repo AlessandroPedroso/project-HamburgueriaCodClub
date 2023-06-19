@@ -69,3 +69,11 @@ export const ReactSelectStyle = styled(ReactSelect)`
     color: #333333;
 
 `
+
+export const ContainerInput = styled.div `
+
+    display: flex;
+    align-items: center;
+    
+
+`

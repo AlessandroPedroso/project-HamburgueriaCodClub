@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from "react"
-import {Container,Label,Input,ButtonStyles,LabelUpload,ReactSelectStyle} from './styles'
+import {Container,Label,Input,ButtonStyles,LabelUpload,ReactSelectStyle,ContainerInput} from './styles'
 
 import { useForm,Controller } from "react-hook-form";
 import { FaCloudUploadAlt } from 'react-icons/fa';
@@ -8,6 +8,9 @@ import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ErrorMessage } from "../../../components";
 import {useHistory} from 'react-router-dom'
+import { toast } from 'react-toastify';
+import Checkbox from '@mui/material/Checkbox';
+
 
 const EditProduct = () =>{
     const [fileName,setFileName] = useState(null)
@@ -20,9 +23,7 @@ const EditProduct = () =>{
         name: Yup.string().required('Digite o nome do produto'),
         price: Yup.string().required('Digite o preço do produto'),
         category: Yup.object().required('Escolha uma categoria'),
-        file: Yup.mixed().test('required','Carregue um arquivo',value=> {return value?.length>0})
-        .test('fileSize','Carregue arquivos de ate 2mb', value=>{return value[0]?.size <= 2000000})
-        .test('type','Carregue apenas arquivos JPEG ou PNG', value => {return value[0]?.type === 'image/jpeg' || value[0]?.type === 'image/png'}),
+        offer: Yup.bool()
 
     })
 
@@ -36,10 +37,22 @@ const EditProduct = () =>{
         productDataFormData.append('price',data.price)
         productDataFormData.append('category_id',data.category.id)
         productDataFormData.append('file',data.file[0])
+        productDataFormData.append('offer',data.offer)
 
-        await api.post('products', productDataFormData)
-        console.log(productDataFormData)
-    };
+        await toast.promise(
+           api.put(`products/${products.id}`, productDataFormData),
+            {
+                pending: 'Editando novo produto...',
+                success: 'Produto criado com sucesso',
+                error: 'falha ao criar o produto'
+            }
+        )
+
+        setTimeout(()=>{
+            push('/listar-produtos')
+        },2000)
+        // console.log(productDataFormData)
+    }
 
     useEffect(() => {
 
@@ -59,13 +72,13 @@ const EditProduct = () =>{
             <form noValidate onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <Label>Nome</Label>
-                    <Input type="text" {...register("name")}/>
+                    <Input type="text" {...register("name")} defaultValue={products.name}/>
                     <ErrorMessage>{errors.name?.message}</ErrorMessage>
                 </div>
 
                 <div>
                     <Label>Preço</Label>
-                    <Input type="number" {...register("price")}/>
+                    <Input type="number" {...register("price")} defaultValue={products.price}/>
                     <ErrorMessage>{errors.price?.message}</ErrorMessage>
                 </div>
 
@@ -92,10 +105,10 @@ const EditProduct = () =>{
                 </div>
                 
                 <div>
-                        <Controller name='category' control={control} render={({field})=> {
+                        <Controller name='category' defaultValue={products.category} control={control} render={({field})=> {
                             return (
 
-                                <ReactSelectStyle {...field} options={categorias} getOptionLabel={cat => cat.name} getOptionValue={cat => cat.id} placeholder="Categorias" />
+                                <ReactSelectStyle {...field} options={categorias} getOptionLabel={cat => cat.name} getOptionValue={cat => cat.id} placeholder="Categorias" defaultValue={products.category} />
 
                             )
                         }}>
@@ -103,9 +116,14 @@ const EditProduct = () =>{
 
                         </Controller>
                     <ErrorMessage>{errors.category?.message}</ErrorMessage>
-                </div>    
+                </div>
+
+                <ContainerInput>
+                        <Checkbox {...register("offer")} defaultChecked={products.offer} color="secondary" />
+                        <Label>Produto em oferta?</Label>
+                </ContainerInput>
                     
-                <ButtonStyles>Adicionar produto</ButtonStyles>
+                <ButtonStyles>Editar produto</ButtonStyles>
              </form>
         </Container>
     )
