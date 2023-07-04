@@ -6,10 +6,8 @@ import {CardProducts} from '../../components'
 import formatCurrency from '../../utils/formartCurrency'
 import {useLocation} from 'react-router-dom'
 
-export const Products = () => {
-
-
-
+export const Products = (props) => {
+    console.log(props)
     const [categorias, setCategorias] = useState([])
     const [products, setProducts] = useState([])
     const [filteredProducts, setFilteredProducts] = useState([])
