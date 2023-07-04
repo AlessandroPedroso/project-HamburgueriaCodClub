@@ -14,3 +14,7 @@ export const ContainerItens = styled.div`
     padding: 20px;
     width: 100%;
 `
+export const testando = styled.div`
+    padding: 20px;
+    width: 100%;
+`
