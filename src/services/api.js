@@ -9,7 +9,7 @@ apiCodeBurger.interceptors.request.use(async config=>{
 
     const userData = await localStorage.getItem('codeburger:userDate')
     const token = userData && JSON.parse(userData).token
-    config.headers.authorization = `Bearer ${token}`
+    config.headers.authorization = `Bearer ${token}` //foi
     return config
 })
 
