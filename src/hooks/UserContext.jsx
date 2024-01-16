@@ -48,6 +48,8 @@ export const useUser = () =>{
         throw new Error("useUser must be used with UserContext")
     }
 
+    localStorage.removeItem('codeburger:cartInfo');
+
     return context
 }
 
