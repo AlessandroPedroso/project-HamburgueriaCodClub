@@ -5,7 +5,7 @@ import {Container,Header,Body,EmptyCart} from './styles'
 import formatCurrency from '../../utils/formartCurrency'
 export const CartItems = () =>{
     const {cardProducts,increaseProducts,decreaseProducts,deleteProducts} = useCart()
-    console.log(cardProducts)
+    // console.log(cardProducts)
     return (
         <Container>
             <Header>

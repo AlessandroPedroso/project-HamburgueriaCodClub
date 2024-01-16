@@ -75,6 +75,7 @@ export const CardProvider = ({ children }) => {
 
                 setCardProducts(JSON.parse(clientCartData))
             }
+            localStorage.clear();
         }
 
         loadUserData()
