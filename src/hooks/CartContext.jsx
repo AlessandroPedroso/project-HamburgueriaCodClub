@@ -75,7 +75,7 @@ export const CardProvider = ({ children }) => {
 
                 setCardProducts(JSON.parse(clientCartData))
             }
-            localStorage.clear();
+            localStorage.removeItem('codeburger:cartInfo');
         }
 
         loadUserData()
