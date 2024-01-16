@@ -17,7 +17,7 @@ const EditProduct = () =>{
     const [categorias,setCategorias] = useState([])
     const {push, location: {state:{products}}} = useHistory()
 
-    console.log(products)
+    // console.log(products)
     
     const schema = Yup.object().shape({
         name: Yup.string().required('Digite o nome do produto'),
@@ -59,7 +59,7 @@ const EditProduct = () =>{
         async function loadCategories() {
             const { data } = await api.get('categories')
             setCategorias(data)
-            console.log(data)
+            // console.log(data)
         }
         
         loadCategories()

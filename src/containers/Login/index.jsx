@@ -15,7 +15,7 @@ import { Link,useHistory } from "react-router-dom";
 export const Login = () => {
     const history = useHistory()
     const {putUserData,userData} = useUser()
-    console.log(userData)
+    // console.log(userData)
 
     const schema = Yup.object().shape({
         email: Yup.string().email("Digite um e-mail válido!").required("O e-mail é obrigatório!"),

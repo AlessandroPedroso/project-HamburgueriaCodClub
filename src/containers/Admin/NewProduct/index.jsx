@@ -34,7 +34,7 @@ const NewProduct = () =>{
         productDataFormData.append('file',data.file[0])
 
         await api.post('products', productDataFormData)
-        console.log(productDataFormData)
+        // console.log(productDataFormData)
     };
 
     useEffect(() => {
@@ -42,7 +42,7 @@ const NewProduct = () =>{
         async function loadCategories() {
             const { data } = await api.get('categories')
             setCategorias(data)
-            console.log(data)
+            // console.log(data)
         }
         
         loadCategories()
