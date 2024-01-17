@@ -32,7 +32,7 @@ export const CartResume = () =>{
         })
 
         localStorage.removeItem('codeburger:cartInfo');
-        navigate(0)
+        window.location.reload();
 
     }
 
