@@ -21,6 +21,7 @@ export const CartResume = () =>{
     },[cardProducts,deliveryTax])
 
     const submitOrder = async() =>{
+        window.location.reload();
         const order = cardProducts.map(product=>{
             return {id:product.id, quantity: product.quantity}
         })
@@ -32,7 +33,7 @@ export const CartResume = () =>{
         })
 
         localStorage.removeItem('codeburger:cartInfo');
-        window.location.reload();
+        
 
     }
 
