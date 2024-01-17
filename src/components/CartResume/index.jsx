@@ -25,7 +25,7 @@ export const CartResume = () =>{
             return {id:product.id, quantity: product.quantity}
         })
 
-        localStorage.removeItem('codeburger:cartInfo');
+        
 
 
 
@@ -34,6 +34,9 @@ export const CartResume = () =>{
             success: 'Pedido realizado com sucesso',
             error: 'Falha ao tentar realizar o seu pedido, tente novamente'
         })
+
+        localStorage.removeItem('codeburger:cartInfo');
+        navigate(0)
 
     }
 
