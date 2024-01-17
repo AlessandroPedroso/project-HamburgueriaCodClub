@@ -37,7 +37,7 @@ export const CartResume = () =>{
             
             window.location.reload(true);
             localStorage.removeItem('codeburger:cartInfo');
-        }, 5000);
+        }, 4500);
 
     }
 
