@@ -34,9 +34,10 @@ export const CartResume = () =>{
         })
 
         setTimeout(()=>{
+            
+            window.location.reload(true);
             localStorage.removeItem('codeburger:cartInfo');
-            window.location.reload(false);
-        }, 500);
+        }, 1000);
 
     }
 
