@@ -10,6 +10,7 @@ export const Header = () =>{
     const {logout,userData} = useUser()
 
     const logoutUser = ()=>{
+        localStorage.removeItem('codeburger:cartInfo');
         logout()
         push('/login')
     }
